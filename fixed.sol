@@ -1,10 +1,12 @@
-pragma solidity 0.8.0;
+// contracts/TestToken.sol
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract ERC20FixedSupply is ERC20 {
-    constructor() {
-        totalSupply += 1000;
-        balances[msg.sender] += 1000;
+    constructor() ERC20("TestToken", "TKN") {
+        _mint(msg.sender, 1000 * 10 ** uint(decimals()));
     }
 }
